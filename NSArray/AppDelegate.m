@@ -71,17 +71,33 @@
    
     // 7 Create new array of mixed numbers. Sort it in an ascending and descending order.
     
-    NSArray *valueArray = @[@1,@8,@23,@18,@2,@6,@54,@3,@12,@9,@17,@4];
     
-    NSArray *sortValueArray = [valueArray sortedArrayUsingSelector:@selector(compare:)];
+    NSMutableArray *valueArraySort = [NSMutableArray arrayWithObjects:
+                                [NSNumber numberWithInt:1],
+                                [NSNumber numberWithInt:7],
+                                [NSNumber numberWithInt:9],
+                                [NSNumber numberWithInt:2],
+                                [NSNumber numberWithInt:20],
+                                [NSNumber numberWithInt:5] ,nil];
+    
    
+    NSSortDescriptor *sortDescriptorYes = [NSSortDescriptor sortDescriptorWithKey:nil ascending:YES selector:@selector(compare:)];
+    
+    NSSortDescriptor *sortDescriptorNo = [NSSortDescriptor sortDescriptorWithKey:nil ascending:NO selector:@selector(compare:)];
+    
+    
+    NSArray *sortYes = [NSArray arrayWithObject:sortDescriptorYes];
+    NSArray *sotrNo = [NSArray arrayWithObject:sortDescriptorNo];
+    
+    [valueArraySort sortUsingDescriptors:sortYes];
+    NSLog(@"Значение по возрастанию  %@", valueArraySort);
+    
+    [valueArraySort sortUsingDescriptors:sotrNo];
+    NSLog(@"Значение по возрастанию  %@", valueArraySort);
     
     
     return YES;
 }
-
-
-
 
 
 - (void)applicationWillResignActive:(UIApplication *)application {
